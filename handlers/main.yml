@@ -1,0 +1,24 @@
+---
+- name: copy files to theme directory
+  copy:
+    src: "{{ tmp_dir }}"
+    dest: "{{ themes_path }}"
+    remote_src: true
+    mode: 0755
+    owner: root
+    group: root
+  register: copy_theme_data
+
+- name: copy files to icons directory
+  copy:
+    src: "{{ tmp_dir }}"
+    dest: "{{ icons_path }}"
+    remote_src: true
+    mode: 0755
+    owner: root
+    group: root
+
+- name: remove tmp theme directory
+  file:
+    path: "{{ tmp_dir }}"
+    state: absent

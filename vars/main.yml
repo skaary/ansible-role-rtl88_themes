@@ -1,0 +1,10 @@
+---
+themes_path: /usr/share/themes
+icons_path: /usr/share/icons
+rtl_repo: https://github.com/rtlewis88/rtl88-Themes.git
+theme_dir: rtl88-arc_darkest
+tmp_dir: /tmp/{{ theme_dir }}
+
+themes_required_packages:
+  - gtk2-engines-murrine
+  - git

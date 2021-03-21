@@ -1,0 +1,35 @@
+---
+- name: ensure required packages are installed
+  apt:
+    name: "{{ apt_packages }}"
+    state: present
+  vars:
+    apt_packages: "{{ themes_required_packages }}"
+
+- name: ensure theme directory exists
+  file:
+    path: "{{ themes_path }}"
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: ensure icons directory exists
+  file:
+    path: "{{ icons_path }}"
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+
+- name: clone arc darkest repo
+  git:
+    repo: "{{ rtl_repo }}"
+    dest: "{{ tmp_dir }}"
+    clone: true
+    update: true
+    depth: 1
+    version: Arc-Darkest-COLORS-Complete-Desktop
+  notify:
+    - copy files to theme directory
+    - copy files to icons directory
