@@ -1,0 +1,12 @@
+---
+
+dependencies: []
+
+galaxy_info:
+  role_name: arc_darkest_theme
+  author: skaary
+  description: Arc Darkest Theme for Linux
+  platforms:
+    - name: Ubuntu
+      versions:
+        - focal
