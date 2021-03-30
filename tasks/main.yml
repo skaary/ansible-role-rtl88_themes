@@ -33,3 +33,8 @@
   notify:
     - copy files to theme directory
     - copy files to icons directory
+
+- name: install lxappearance to manage themes
+  apt:
+    name: lxappearance
+    state: present
