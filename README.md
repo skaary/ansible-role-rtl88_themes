@@ -13,6 +13,8 @@ None
 
 ## Example Playbook
 
-
-## License
-
+```yaml
+- hosts: all
+  roles:
+    - skaary.arc_darkest_theme
+```
