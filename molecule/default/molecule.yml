@@ -24,4 +24,3 @@ scenario:
     # - idempotence
     - lint
     - verify
-
