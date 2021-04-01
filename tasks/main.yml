@@ -22,19 +22,25 @@
     owner: root
     group: root
 
+- name: create temporary directory
+  tempfile:
+    state: directory
+    suffix: temp
+  register: temp_dir
+
 - name: clone arc darkest repo
   git:
     repo: "{{ rtl_repo }}"
-    dest: "{{ tmp_dir }}"
-    clone: true
-    update: true
-    depth: 1
+    dest: "{{ temp_dir }}"
+    depth: "1"
     version: Arc-Darkest-COLORS-Complete-Desktop
   notify:
     - copy files to theme directory
     - copy files to icons directory
+    - remove temporary directory
 
 - name: install lxappearance to manage themes
   apt:
     name: lxappearance
     state: present
+  when: lxappearance

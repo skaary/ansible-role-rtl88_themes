@@ -1,7 +1,7 @@
 ---
 - name: copy files to theme directory
   copy:
-    src: "{{ tmp_dir }}"
+    src: "{{ temp_dir }}/"
     dest: "{{ themes_path }}"
     remote_src: true
     mode: 0755
@@ -11,14 +11,15 @@
 
 - name: copy files to icons directory
   copy:
-    src: "{{ tmp_dir }}"
+    src: "{{ temp_dir }}/"
     dest: "{{ icons_path }}"
     remote_src: true
     mode: 0755
     owner: root
     group: root
 
-- name: remove tmp theme directory
+- name: remove temporary directory
   file:
-    path: "{{ tmp_dir }}"
+    path: "{{ temp_dir }}"
     state: absent
+  when: temp_dir.path is defined
