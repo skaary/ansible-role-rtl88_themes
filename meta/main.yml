@@ -2,9 +2,9 @@
 dependencies: []
 
 galaxy_info:
-  role_name: arc_darkest_theme
+  role_name: rtl88_themes
   author: skaary
-  description: Arc Darkest Theme for Linux
+  description: Role to install RTL88 Themes for Linux
   platforms:
     - name: Ubuntu
       versions:

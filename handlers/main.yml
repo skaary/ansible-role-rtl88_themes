@@ -1,25 +1,14 @@
 ---
-- name: copy files to theme directory
-  copy:
-    src: "{{ temp_dir }}/"
-    dest: "{{ themes_path }}"
-    remote_src: true
-    mode: 0755
-    owner: root
-    group: root
-  register: copy_theme_data
+- name: copy all icon directories into place
+  command: find . -maxdepth 1 -not -path './[Numix]*' -not -path './[Suru]*' -type d \( -iname '*suru*' -o -iname '*numix*' \) -exec mv -t {{ icons_path }} "{}" \;
+  args:
+    chdir: /tmp/{{ item.directory }}
+  loop: "{{ rtl_themes }}"
+  become: true
 
-- name: copy files to icons directory
-  copy:
-    src: "{{ temp_dir }}/"
-    dest: "{{ icons_path }}"
-    remote_src: true
-    mode: 0755
-    owner: root
-    group: root
-
-- name: remove temporary directory
-  file:
-    path: "{{ temp_dir }}"
-    state: absent
-  when: temp_dir.path is defined
+- name: copy all desktop theme directories into place
+  command: find . -mindepth 1 -maxdepth 1 -type d ! -name .git -exec mv -t {{ themes_path }} "{}" \;
+  args:
+    chdir: /tmp/{{ item.directory }}
+  loop: "{{ rtl_themes }}"
+  become: true

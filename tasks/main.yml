@@ -1,46 +1,36 @@
 ---
 - name: ensure required packages are installed
   apt:
-    name: "{{ apt_packages }}"
+    name: "{{ themes_required_packages }}"
     state: present
-  vars:
-    apt_packages: "{{ themes_required_packages }}"
+  become: true
 
 - name: ensure theme directory exists
   file:
     path: "{{ themes_path }}"
     state: directory
-    mode: 0755
+    mode: "0755"
     owner: root
     group: root
+  become: true
 
 - name: ensure icons directory exists
   file:
     path: "{{ icons_path }}"
     state: directory
-    mode: 0755
+    mode: "0755"
     owner: root
     group: root
+  become: true
 
-- name: create temporary directory
-  tempfile:
-    state: directory
-    suffix: temp
-  register: temp_dir
-
-- name: clone arc darkest repo
+- name: clone rtl themes from git
   git:
-    repo: "{{ rtl_repo }}"
-    dest: "{{ temp_dir }}"
+    repo: "{{ rtl_git_repository }}"
+    dest: "/tmp/{{ item.directory }}"
     depth: "1"
-    version: Arc-Darkest-COLORS-Complete-Desktop
+    version: "{{ item.version }}"
+    force: true
+  loop: "{{ rtl_themes }}"
   notify:
-    - copy files to theme directory
-    - copy files to icons directory
-    - remove temporary directory
-
-- name: install lxappearance to manage themes
-  apt:
-    name: lxappearance
-    state: present
-  when: lxappearance
+    - copy all icon directories into place
+    - copy all desktop theme directories into place

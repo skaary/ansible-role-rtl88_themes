@@ -6,6 +6,11 @@
     - name: Update apt cache.
       apt: update_cache=true cache_valid_time=600
 
+    - name: install git
+      apt:
+        name: git
+        state: present
+
   tasks:
     - name: "Include ansible-role-arc_darkest_theme"
       include_role:

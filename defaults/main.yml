@@ -1,2 +1,11 @@
 ---
-lxappearance: true
+themes_path: /usr/share/themes
+icons_path: /usr/share/icons
+rtl_git_repository: https://github.com/rtlewis88/rtl88-Themes.git
+rtl_tmp_directory: /tmp/rtl88_clone
+
+themes_required_packages:
+  - gtk2-engines-murrine
+  - libcanberra-gtk-module
+
+rtl_themes: []

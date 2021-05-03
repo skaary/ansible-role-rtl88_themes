@@ -1,7 +1,7 @@
-# Ansible Role: Arc_Darkest_Theme
+# Ansible Role: rtl88 Themes
 [![CI](https://github.com/skaary/ansible-role-arc_darkest_theme/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/skaary/ansible-role-arc_darkest_theme/actions?query=workflow%3Ci)
 
-An Ansible Role that installs the theme [Arc Darkest Theme](https://github.com/rtlewis88/) on Linux.
+An Ansible Role that allows the download of [rtlewis88 themes](https://github.com/rtlewis88/) on Linux. The icons and desktop themes are installed system-wide (`/usr/share/icons` and `/usr/share/theme`).
 
 ## Requirements
 
@@ -13,18 +13,25 @@ None
 
 ## Role variables
 
-Available variables are listed below, along with default values (see `defaults/main.yml`):
+The variable `rtl_themes` has two entries called `directory` and `version`; `directory` denotes the directory name where the repository is cloned to (`/tmp/$directory`), `version` specifies the branch name of the wanted theme.
 
 ```yaml
-lxappearance: true
+rtl_themes:
+  - directory: rtl88-crushed_icons
+    version: CRUSHED-Icons-and-Folder
 ```
-
-[Lxappearance](http://wiki.lxde.org/en/LXAppearance) is a style configuration tool for GTK 2 and GTK 3 and can be optionally installed to make setting the theme and icons easier; the values for `lxappearance` can be either true or false.
 
 ## Example Playbook
 
 ```yaml
 - hosts: all
+  rtl_themes:
+  - directory: rtl88-crushed_icons
+    version: CRUSHED-Icons-and-Folder
+  - directory: rtl88-arc_darkest_complete
+    version: Arc-Darkest-COLORS-Complete-Desktop
+  - directory: rtl88-nord_black_frost
+    version: Nord-Black-Frost
   roles:
-    - skaary.arc_darkest_theme
+    - rtl88_themes
 ```
