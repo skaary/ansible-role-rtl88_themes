@@ -7,5 +7,6 @@ rtl_tmp_directory: /tmp/rtl88_clone
 themes_required_packages:
   - gtk2-engines-murrine
   - libcanberra-gtk-module
+  - git
 
 rtl_themes: []
