@@ -1,5 +1,7 @@
+---
 skip_list:
   - 'yaml'
   - 'risky-shell-pipe'
   - 'role-name'
   - 'meta-no-info'
+  - 'fqcn-builtins'

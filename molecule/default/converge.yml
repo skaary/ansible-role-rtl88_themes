@@ -18,6 +18,6 @@
         state: present
 
   tasks:
-    - name: "Include ansible-role-arc_darkest_theme"
+    - name: "Include ansible-role-rtl88_themes"
       include_role:
-        name: "ansible-role-arc_darkest_theme"
+        name: "ansible-role-rtl88_themes"
