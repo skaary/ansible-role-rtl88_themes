@@ -5,6 +5,8 @@ galaxy_info:
   role_name: rtl88_themes
   author: skaary
   description: Role to install RTL88 Themes for Linux
+  license: "license (BSD, MIT)"
+  min_ansible_version: "2.4"
   platforms:
     - name: Ubuntu
       versions:
