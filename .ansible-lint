@@ -1,7 +1,8 @@
 ---
 skip_list:
-  - 'yaml'
   - 'risky-shell-pipe'
-  - 'role-name'
-  - 'meta-no-info'
+
+warn_list:
   - 'fqcn-builtins'
+  - 'experimental'
+  - 'internal-error'

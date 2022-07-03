@@ -1,0 +1,13 @@
+---
+- name: Install rtl88_themes
+  hosts: default
+  vars:
+    rtl_themes:
+      - directory: rtl88-arc_darkest_complete
+        version: Arc-Darkest-COLORS-Complete-Desktop
+      - directory: rtl88-nord_black_frost
+        version: Nord-Black-Frost
+  roles:
+    - rtl88_themes
+  
+
